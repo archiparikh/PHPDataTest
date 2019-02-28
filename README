@@ -1,0 +1,34 @@
+# Test Instructions
+The code in this directory contains a skeleton console application. You must
+write enough code to achieve the following requirements:
+
+1) Given a properly formatted xml or json file, print (console) the data in the
+   specified output format (xml|json). The data is a collection of Addresses. 
+   There can be 0 or more Addresses in the collection.
+
+2) The console output should contain line breaks and indentation for readability.
+
+3) Although this test is limited to json and xml formats, the application should
+   be easily extended to allow other formats (csv, yaml, etc).
+   
+4) The application is run using these commands:
+   php console.php data-convert sample-data/data.xml -o json
+   php console.php data-convert sample-data/data.json -o xml
+
+## Prerequisites
+You must have an internet connected computer with the Docker application installed.
+
+## Set up the environment
+The steps below will allow you to create the docker container which can be used 
+to execute this code. Run these commands from this project's root directory.
+
+Replace the "/full/path/to" with your actual full path to the project's root directory
+docker build -t php-data-test .
+docker run -v /full/path/to/PHPDataTest:/var/www/html -d php-data-test
+
+## Log into the container in order to run commands
+docker ps (get container id)
+docker exec -it $containerId bash
+
+## Install the vendor libraries (inside the docker container)
+php composer.phar install
